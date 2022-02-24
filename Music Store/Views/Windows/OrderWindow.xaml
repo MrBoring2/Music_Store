@@ -1,0 +1,77 @@
+﻿<local:BaseWindow x:Class="Music_Store.Views.Windows.OrderWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Music_Store.Views.Windows"
+        mc:Ignorable="d"
+        xmlns:mahapps="http://metro.mahapps.com/winfx/xaml/controls"
+        Title="Music Store | Оформление заказа" Height="660" Width="958">
+    <local:BaseWindow.IconTemplate>
+        <DataTemplate>
+            <Image Margin="2"
+                   RenderOptions.BitmapScalingMode="HighQuality"
+                   Source="/Resources/Images/logo.ico"/>
+        </DataTemplate>
+    </local:BaseWindow.IconTemplate>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="517*"/>
+            <RowDefinition Height="45"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.RowSpan="1" Margin="0,0,0,20">
+            <Grid Margin="0,0,0,0">
+                <TextBox UndoLimit="4" Text="{Binding Search, UpdateSourceTrigger=PropertyChanged}" mahapps:TextBoxHelper.Watermark="Введите название пластинки или лейбл для поиска..." FontSize="14" BorderBrush="#A4C400" Height="30" Grid.Column="0" VerticalAlignment="Top" Margin="5"/>
+                <ListView Margin="5,40,5,50" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding MusicRecords}" SelectedItem="{Binding SelectedMusicRecord}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate DataType="ListViewItem">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="0.5*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Title}" FontSize="16" FontWeight="Bold" TextWrapping="Wrap"/>
+                                    <TextBlock Text="{Binding Label}" FontSize="14" TextWrapping="Wrap"/>
+                                    <TextBlock Text="{Binding MusicRecordType.Title}" FontSize="14" TextWrapping="Wrap"/>
+                                </StackPanel>
+                                <TextBlock Grid.Column="1" Text="{Binding Price, StringFormat={}{0:F2} ₽}" FontSize="15" HorizontalAlignment="Right"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+            <StackPanel VerticalAlignment="Bottom" >
+                <Button x:Name="addToOrder" Margin="5" Background="#CC60A917"  BorderBrush="#A4C400"  Style="{StaticResource MahApps.Styles.Button.Square.Accent}" Foreground="White" Click="addToOrder_Click">
+                    <Button.Content>
+                        <TextBlock Text="Добавить в заказ" FontSize="20"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Button.Content>
+                </Button>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Column="1" Grid.RowSpan="1" Margin="0,0,0,20">
+            <ListView Margin="5,40,5,50" ScrollViewer.VerticalScrollBarVisibility="Auto" ItemsSource="{Binding MusicRecordsInOrder}" SelectedItem="{Binding SelectedMusicRecordInOrder}">
+
+            </ListView>
+            <Button x:Name="removeFromOrder" VerticalAlignment="Bottom" Margin="5" Background="#CC60A917"  BorderBrush="#A4C400"  Style="{StaticResource MahApps.Styles.Button.Square.Accent}" Foreground="White" Click="removeFromOrder_Click">
+                <Button.Content>
+                    <TextBlock Text="Удалить из заказа" FontSize="20"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Button.Content>
+            </Button>
+        </Grid>
+        <Button Grid.Row="1" Grid.Column="0" Margin="5,5,5,5" Background="#CC60A917"  BorderBrush="#A4C400"  Style="{StaticResource MahApps.Styles.Button.Square.Accent}" Foreground="White" Click="save_Click">
+            <Button.Content>
+                <TextBlock Text="Оформить заказ" FontSize="20"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Button.Content>
+        </Button>
+        <Button Grid.Row="1" Grid.Column="1" Margin="5,5,5,5" Background="#CC60A917"  BorderBrush="#A4C400"  Style="{StaticResource MahApps.Styles.Button.Square.Accent}" Foreground="White" Click="remove_Click">
+            <Button.Content>
+                <TextBlock Text="Отмена" FontSize="20"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Button.Content>
+        </Button>
+    </Grid>
+</local:BaseWindow>
