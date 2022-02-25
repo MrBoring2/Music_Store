@@ -198,7 +198,14 @@
     <Compile Include="Models\MusicRecordOrderAndDelivery.cs" />
     <Compile Include="Models\NotifyPropertyChangedBase.cs" />
     <Compile Include="Models\SortModel.cs" />
+    <Compile Include="Services\UserService.cs" />
     <Compile Include="Views\Windows\BaseWindow.cs" />
+    <Compile Include="Views\Windows\DeliveryWindow.xaml.cs">
+      <DependentUpon>DeliveryWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Windows\LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Windows\MusicRecordsListWindow.xaml.cs">
       <DependentUpon>MusicRecordsListWindow.xaml</DependentUpon>
     </Compile>
@@ -234,6 +241,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Views\Windows\DeliveryWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Windows\LoginWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Windows\MusicRecordsListWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -43,6 +43,7 @@
                                 <TextBlock Text="{Binding Label, StringFormat={}Лейбл: {0}}" FontSize="14"/>
                                 <TextBlock Text="{Binding ReleaseDate, StringFormat={}Дата релиза: {0:dd.MM.yyyy}}" FontSize="14"/>
                                 <TextBlock Text="{Binding Performers, StringFormat={}Исполнители: {0}}" FontSize="14" HorizontalAlignment="Left" MaxWidth="800" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding GenresString, StringFormat={}Жанры: {0}}" FontSize="14" HorizontalAlignment="Left" MaxWidth="800" TextWrapping="Wrap"/>
                             </StackPanel>
                             <StackPanel Grid.Column="2" HorizontalAlignment="Left" Margin="5">
                                 <TextBlock Text="{Binding Price, StringFormat={}{0:F2} ₽}" FontSize="20" Margin="5"/>
@@ -138,7 +139,7 @@
                             <TextBlock Text="Оформить заказ" FontSize="16"/>
                         </Button.Content>
                     </Button>
-                    <Button Background="#CC60A917" Foreground="White" BorderBrush="#A4C400" Style="{StaticResource MahApps.Styles.Button.Square.Accent}">
+                    <Button Background="#CC60A917" Foreground="White" BorderBrush="#A4C400" Style="{StaticResource MahApps.Styles.Button.Square.Accent}" Click="delivery_Click">
                         <Button.Content>
                             <TextBlock Text="Оформить поставку" FontSize="16"/>
                         </Button.Content>

@@ -19,7 +19,7 @@ namespace Music_Store.Data
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int DeliveryId { get; set; }
 
-        public int CountInDelivry { get; set; }
+        public int CountInDelivery { get; set; }
 
         public virtual Delivery Delivery { get; set; }
 

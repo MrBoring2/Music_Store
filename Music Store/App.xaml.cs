@@ -16,8 +16,8 @@ namespace Music_Store
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            var musicRecordsWindow = new MusicRecordsListWindow();
-            musicRecordsWindow.Show();
+            var loginWindow = new LoginWindow();
+            loginWindow.Show();
             base.OnStartup(e);
 
         }

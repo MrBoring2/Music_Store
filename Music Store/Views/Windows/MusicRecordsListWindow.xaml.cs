@@ -104,7 +104,7 @@ namespace Music_Store.Views.Windows
 
         private void LoadGenres()
         {
-            Genres = _context.Genre.ToList();
+            Genres = _context.Genre.OrderBy(p => p.Title).ToList();
             foreach (var genre in Genres)
             {
                 genre.PropertyChanged += Genre_PropertyChanged;
@@ -235,7 +235,7 @@ namespace Music_Store.Views.Windows
             }
             if (int.TryParse(result, out int res))
             {
-                if(res <= 0)
+                if (res <= 0)
                 {
                     await this.ShowMessageAsync("Количество должно быть больше 0!", "Введено отрицательное или равно нулю количество. Введите положительное число.", MessageDialogStyle.Affirmative, new MetroDialogSettings { ColorScheme = MetroDialogColorScheme.Inverted });
                     return;
@@ -266,7 +266,7 @@ namespace Music_Store.Views.Windows
 
         private async void removeFromHall_Click(object sender, RoutedEventArgs e)
         {
-            var result = await this.ShowInputAsync("Сколько выставить?", "Введите количество для выставки товара", new MetroDialogSettings { DialogResultOnCancel = MessageDialogResult.Canceled});
+            var result = await this.ShowInputAsync("Сколько выставить?", "Введите количество для выставки товара", new MetroDialogSettings { DialogResultOnCancel = MessageDialogResult.Canceled });
             if (result == null)
             {
                 return;
@@ -300,8 +300,17 @@ namespace Music_Store.Views.Windows
 
         private void order_Click(object sender, RoutedEventArgs e)
         {
-            var orderWindow = new OrderWindow();
-            if(orderWindow.ShowDialog() == true)
+            var orderWindow = new OrderWindow(_context);
+            if (orderWindow.ShowDialog() == true)
+            {
+                LoadMusicRecords();
+            }
+        }
+
+        private void delivery_Click(object sender, RoutedEventArgs e)
+        {
+            var deliveryWindow = new DeliveryWindow(_context);
+            if(deliveryWindow.ShowDialog() == true)
             {
                 LoadMusicRecords();
             }

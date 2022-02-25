@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "d5609940-e2ff-4c75-9762-6b63c63b9de2": {
+      "ProjectGuid": "d5609940-e2ff-4c75-9762-6b63c63b9de2",
+      "DisplayName": "Music Store",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

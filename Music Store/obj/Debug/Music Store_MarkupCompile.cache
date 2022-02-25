@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\MrBoring\GIT\Music_Store\Music Store\App.xaml
-21993853520
+4-1771404052
 
-231197224246
-57-575612914
-Views\Windows\MusicRecordsListWindow.xaml;Views\Windows\OrderWindow.xaml;
+26-1405718505
+57-2064849111
+Views\Windows\DeliveryWindow.xaml;Views\Windows\LoginWindow.xaml;Views\Windows\MusicRecordsListWindow.xaml;Views\Windows\OrderWindow.xaml;
 
-True
+False
 

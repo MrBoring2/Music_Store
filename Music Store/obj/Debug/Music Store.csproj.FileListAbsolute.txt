@@ -269,3 +269,7 @@ C:\Users\MrBoring\GIT\Music_Store\Music Store\obj\Debug\Music Store.csproj.CoreC
 C:\Users\MrBoring\GIT\Music_Store\Music Store\obj\Debug\Music Store.csproj.CopyComplete
 C:\Users\MrBoring\GIT\Music_Store\Music Store\obj\Debug\Music Store.exe
 C:\Users\MrBoring\GIT\Music_Store\Music Store\obj\Debug\Music Store.pdb
+C:\Users\MrBoring\GIT\Music_Store\Music Store\obj\Debug\Views\Windows\LoginWindow.g.cs
+C:\Users\MrBoring\GIT\Music_Store\Music Store\obj\Debug\Views\Windows\LoginWindow.baml
+C:\Users\MrBoring\GIT\Music_Store\Music Store\obj\Debug\Views\Windows\DeliveryWindow.g.cs
+C:\Users\MrBoring\GIT\Music_Store\Music Store\obj\Debug\Views\Windows\DeliveryWindow.baml

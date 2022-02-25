@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\MrBoring\source\repos\Music Store\Music Store\obj\Debug\
+C:\Users\MrBoring\GIT\Music_Store\Music Store\obj\Debug\
 Music_Store
 none
 false
 DEBUG;TRACE
-C:\Users\MrBoring\source\repos\Music Store\Music Store\App.xaml
-242543993
+C:\Users\MrBoring\GIT\Music_Store\Music Store\App.xaml
+4-1771404052
 
-24-2004708312
-57858349019
-Views\Windows\MusicRecordsListWindow.xaml;Views\Windows\OrderWindow.xaml;
+27807160173
+57-2064849111
+Views\Windows\DeliveryWindow.xaml;Views\Windows\LoginWindow.xaml;Views\Windows\MusicRecordsListWindow.xaml;Views\Windows\OrderWindow.xaml;
 
 True
 

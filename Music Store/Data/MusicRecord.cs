@@ -5,6 +5,7 @@ namespace Music_Store.Data
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Linq;
 
     [Table("MusicRecord")]
     public partial class MusicRecord : BaseEntity
@@ -48,6 +49,28 @@ namespace Music_Store.Data
         public string CountInHall => MusicRecordsInTheHall?.Count > 0 ? MusicRecordsInTheHall.Count.ToString() + " шт." : "Распродано";
         public int CountInHallInt => MusicRecordsInTheHall == null ? 0 : MusicRecordsInTheHall.Count;
         public string CountInStockText => CountInStock > 0 ? CountInStock.ToString() + " шт." : "Закончились";
+        public string GenresString
+        {
+            get
+            {
+                string genres = string.Empty;
+                if (Genre.Count > 0)
+                {
+                    foreach (var item in Genre)
+                    {
+                        if (item != Genre.LastOrDefault())
+                        {
+                            genres += $"{item.Title} / ";
+                        }
+                        else
+                        {
+                            genres += item.Title;
+                        }
+                    }
+                }
+                return genres;
+            }
+        }
         public int TypeId { get; set; }
 
         public virtual MusicRecordType MusicRecordType { get; set; }

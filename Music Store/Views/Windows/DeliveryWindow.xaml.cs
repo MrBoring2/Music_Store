@@ -20,24 +20,31 @@ using System.Windows.Shapes;
 namespace Music_Store.Views.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для OrderWindow.xaml
+    /// Логика взаимодействия для DeliveryWindow.xaml
     /// </summary>
-    public partial class OrderWindow : BaseWindow
+    public partial class DeliveryWindow : BaseWindow
     {
         private readonly MusicStoreContext _context;
         private string search;
         private MusicRecord selectedMusicRecord;
-        private decimal totalPrice;
         private MusicRecordOrderAndDelivery selectedMusicRecordInOrder;
+        private Supplier selectedSupplier;
 
-        public OrderWindow(MusicStoreContext context)
+        public DeliveryWindow(MusicStoreContext context)
         {
             _context = context;
             search = string.Empty;
             InitializeComponent();
             LoadMusicRecords();
+            LoadSuppliers();
             OnPropertyChanged(nameof(Search));
             DataContext = this;
+        }
+
+        private void LoadSuppliers()
+        {
+            Suppliers = new List<Supplier>(_context.Supplier);
+            SelectedSupplier = Suppliers.FirstOrDefault();
         }
 
         private void LoadMusicRecords()
@@ -48,16 +55,17 @@ namespace Music_Store.Views.Windows
         }
         public IEnumerable<MusicRecord> DisplayedMusicRecords => MusicRecords.Where(p => p.Title.ToLower().Contains(Search.ToLower()) || p.Label.ToLower().Contains(Search.ToLower()));
         public ObservableCollection<MusicRecord> MusicRecords { get; set; }
+        public List<Supplier> Suppliers { get; set; }
+        public Supplier SelectedSupplier { get => selectedSupplier; set { selectedSupplier = value; OnPropertyChanged(); } }
         public ObservableCollection<MusicRecordOrderAndDelivery> MusicRecordsInOrder { get; set; }
         public MusicRecord SelectedMusicRecord { get { return selectedMusicRecord; } set { selectedMusicRecord = value; OnPropertyChanged(); } }
         public MusicRecordOrderAndDelivery SelectedMusicRecordInOrder { get { return selectedMusicRecordInOrder; } set { selectedMusicRecordInOrder = value; OnPropertyChanged(); } }
-        public decimal TotalPrice { get { return totalPrice; } set { totalPrice = value; OnPropertyChanged(); } }
         public string Search { get { return search; } set { search = value; OnPropertyChanged(); OnPropertyChanged(nameof(DisplayedMusicRecords)); } }
-        private async void addToOrder_Click(object sender, RoutedEventArgs e)
+        private async void addToDelivery_Click(object sender, RoutedEventArgs e)
         {
             if (SelectedMusicRecord != null)
             {
-                var result = await this.ShowInputAsync("Количество в заказе?", "Введите количество пластинок для заказа", new MetroDialogSettings { DialogResultOnCancel = MessageDialogResult.Canceled });
+                var result = await this.ShowInputAsync("Количество в поставке?", "Введите количество пластинок для поставки", new MetroDialogSettings { DialogResultOnCancel = MessageDialogResult.Canceled });
                 if (result == null)
                 {
                     return;
@@ -69,17 +77,12 @@ namespace Music_Store.Views.Windows
                         await this.ShowMessageAsync("Количество должно быть больше 0!", "Введено отрицательное или равно нулю количество. Введите положительное число.", MessageDialogStyle.Affirmative, new MetroDialogSettings { ColorScheme = MetroDialogColorScheme.Inverted });
                         return;
                     }
-                    if (res > SelectedMusicRecord.CountInHallInt)
-                    {
-                        await this.ShowMessageAsync("Введённое количество больше, чем выставлено в зале!", "Количество больше, чем доступно в зале.", MessageDialogStyle.Affirmative, new MetroDialogSettings { ColorScheme = MetroDialogColorScheme.Inverted });
-                        return;
-                    }
                     else
                     {
                         if (MusicRecordsInOrder.FirstOrDefault(p => p.MusicRecord.Id == SelectedMusicRecord.Id) == null)
                         {
                             MusicRecordsInOrder.Add(new MusicRecordOrderAndDelivery(SelectedMusicRecord, res));
-                            TotalPrice += SelectedMusicRecord.Price * res;
+                            
                         }
                         else
                         {
@@ -91,11 +94,10 @@ namespace Music_Store.Views.Windows
             }
         }
 
-        private void removeFromOrder_Click(object sender, RoutedEventArgs e)
+        private void removeFromDelivery_Click(object sender, RoutedEventArgs e)
         {
             if (SelectedMusicRecordInOrder != null)
             {
-                TotalPrice -= SelectedMusicRecordInOrder.MusicRecord.Price * SelectedMusicRecordInOrder.Count;
                 MusicRecordsInOrder.Remove(SelectedMusicRecordInOrder);
             }
         }
@@ -104,26 +106,28 @@ namespace Music_Store.Views.Windows
         {
             if (MusicRecordsInOrder.Count > 0)
             {
-                var order = new Order
+                var delivery = new Delivery
                 {
                     Date = DateTime.Now,
                     EmployeeId = UserService.Instance.Employee.Id,
-                    MusicRecordInOrder = new List<MusicRecordInOrder>()
+                    SupplierId = SelectedSupplier.Id,
+                    MusicRecordInDelivery = new List<MusicRecordInDelivery>()
                 };
                 foreach (var item in MusicRecordsInOrder)
                 {
-                    order.MusicRecordInOrder.Add(new MusicRecordInOrder { CountInOrder = item.Count, MusicRecordId = item.MusicRecord.Id });
+                    delivery.MusicRecordInDelivery.Add(new MusicRecordInDelivery { CountInDelivery = item.Count, MusicRecordId = item.MusicRecord.Id });
                 }
-                _context.Order.Add(order);
+                _context.Delivery.Add(delivery);
 
-                foreach (var item in order.MusicRecordInOrder)
+                foreach (var item in delivery.MusicRecordInDelivery)
                 {
-                    var musicRecordInHall = _context.MusinRecordsInTheHall.FirstOrDefault(p => p.MusicRecordId == item.MusicRecordId);
-                    musicRecordInHall.Count -= item.CountInOrder;
+                    var musicRecord = _context.MusicRecord.FirstOrDefault(p => p.Id == item.MusicRecordId);
+                    musicRecord.CountInStock += item.CountInDelivery;
                 }
 
                 _context.SaveChanges();
-                await this.ShowMessageAsync("Заказ успешно оформлен!", "Товар из зала в скором времени будет списан.", MessageDialogStyle.Affirmative);
+                await this.ShowMessageAsync("Поставка успешно оформлена!", "Товар прибудет в скором времени.", MessageDialogStyle.Affirmative);
+
                 this.DialogResult = true;
             }
             else
