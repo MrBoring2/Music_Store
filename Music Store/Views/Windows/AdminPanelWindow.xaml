@@ -1,0 +1,35 @@
+﻿<local:BaseWindow x:Class="Music_Store.Views.Windows.AdminPanelWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Music_Store.Views.Windows"
+        mc:Ignorable="d"
+        Title="Music Store | Панель администратора" Height="407" Width="450" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <local:BaseWindow.IconTemplate>
+        <DataTemplate>
+            <Image Margin="2"
+                   RenderOptions.BitmapScalingMode="HighQuality"
+                   Source="/Resources/Images/logo.ico"/>
+        </DataTemplate>
+    </local:BaseWindow.IconTemplate>
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Grid.Row="1" Grid.Column="0" Margin="5,5,5,5" Background="#CC60A917"  BorderBrush="#A4C400"  Style="{StaticResource MahApps.Styles.Button.Square.Accent}" Foreground="White" Click="OperMusicRecords_Click">
+                <Button.Content>
+                    <TextBlock Text="Управление товарами" FontSize="20"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Button.Content>
+            </Button>
+            <Button Grid.Row="1" Grid.Column="0" Margin="5,35,5,5" Background="#CC60A917"  BorderBrush="#A4C400"  Style="{StaticResource MahApps.Styles.Button.Square.Accent}" Foreground="White" Click="OpenEmployees_Click">
+                <Button.Content>
+                    <TextBlock Text="Управление сотрудниками" FontSize="20"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Button.Content>
+            </Button>
+            <Button Grid.Row="1" Grid.Column="0" Margin="5,35,5,5" Background="#CC60A917"  BorderBrush="#A4C400"  Style="{StaticResource MahApps.Styles.Button.Square.Accent}" Foreground="White" Click="Exit_Click">
+                <Button.Content>
+                    <TextBlock Text="Выход" FontSize="20"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Button.Content>
+            </Button>
+        </StackPanel>
+    </Grid>
+</local:BaseWindow>

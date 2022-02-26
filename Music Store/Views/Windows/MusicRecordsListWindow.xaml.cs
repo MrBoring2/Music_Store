@@ -1,6 +1,7 @@
 ﻿using MahApps.Metro.Controls.Dialogs;
 using Music_Store.Data;
 using Music_Store.Models;
+using Music_Store.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -33,6 +34,8 @@ namespace Music_Store.Views.Windows
         private string search;
         private SortModel selectedSort;
         private int itemsPerPage;
+        private Visibility workerVisibility;
+        private Visibility adminVisibility;
         public MusicRecordsListWindow()
         {
             _context = new MusicStoreContext();
@@ -56,16 +59,30 @@ namespace Music_Store.Views.Windows
         public string Search { get { return search; } set { search = value; OnPropertyChanged(); RefreshMusicRecords(); } }
         public int CurrentPage { get => currentPage; set { currentPage = value; OnPropertyChanged(); } }
         public SortModel SelectedSort { get { return selectedSort; } set { selectedSort = value; OnPropertyChanged(); RefreshMusicRecords(); } }
+        public Visibility AdminVisibility { get => adminVisibility; set { adminVisibility = value; OnPropertyChanged(); } }
+        public Visibility WorkerVisibility { get => workerVisibility; set { workerVisibility = value; OnPropertyChanged(); } }
         private void LoadData()
         {
             itemsPerPage = 10;
             search = string.Empty;
             Pages = new ObservableCollection<int>();
 
+            if (UserService.Instance.Employee.Id == 1)
+            {
+                AdminVisibility = Visibility.Collapsed;
+                WorkerVisibility = Visibility.Visible;
+            }
+            else
+            {
+                AdminVisibility = Visibility.Visible;
+                WorkerVisibility = Visibility.Collapsed;
+            }
+
             LoadGenres();
             LoadTypes();
             LoadSort();
             LoadMusicRecords();
+            LoadEvents();
             LoadPages();
             OnPropertyChanged(nameof(SelectedType));
             OnPropertyChanged(nameof(SelectedSort));
@@ -121,8 +138,35 @@ namespace Music_Store.Views.Windows
         private void LoadMusicRecords()
         {
             MusicRecords = _context.MusicRecord.ToList();
+           
             DisplayedMusicRecords = new ObservableCollection<MusicRecord>();
             RefreshMusicRecords();
+        }
+
+        private void LoadEvents()
+        {
+            foreach (var musicRecord in MusicRecords)
+            {
+                musicRecord.MenuItems[0].Click += setInHall_Click;
+                musicRecord.MenuItems[1].Click += removeFromHall_Click;
+                musicRecord.MenuItems[2].Click += Edit_Click;
+                musicRecord.MenuItems[3].Click += Remove_Click;
+
+                if (UserService.Instance.Employee.RoleId == 2)
+                {
+                    musicRecord.MenuItems[0].Visibility = Visibility.Collapsed;
+                    musicRecord.MenuItems[1].Visibility = Visibility.Collapsed;
+                    musicRecord.MenuItems[2].Visibility = Visibility.Visible;
+                    musicRecord.MenuItems[3].Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    musicRecord.MenuItems[0].Visibility = Visibility.Visible;
+                    musicRecord.MenuItems[1].Visibility = Visibility.Visible;
+                    musicRecord.MenuItems[2].Visibility = Visibility.Collapsed;
+                    musicRecord.MenuItems[3].Visibility = Visibility.Collapsed;
+                }
+            }
         }
 
         private void RefreshMusicRecords()
@@ -310,7 +354,69 @@ namespace Music_Store.Views.Windows
         private void delivery_Click(object sender, RoutedEventArgs e)
         {
             var deliveryWindow = new DeliveryWindow(_context);
-            if(deliveryWindow.ShowDialog() == true)
+            if (deliveryWindow.ShowDialog() == true)
+            {
+                LoadMusicRecords();
+            }
+        }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            UserService.Instance.Logout();
+            var loginWidnow = new LoginWindow();
+            loginWidnow.Show();
+            this.Close();
+        }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            var adminWidnow = new AdminPanelWindow();
+            adminWidnow.Show();
+            this.Close();
+        }
+
+        private async void Remove_Click(object sender, RoutedEventArgs e)
+        {
+            if (SelectedMusicRecord != null)
+            {
+                var musicRecord = _context.MusicRecord.Find(SelectedMusicRecord.Id);
+                if (musicRecord != null)
+                {
+                    if (musicRecord.MusicRecordInOrder.Count == 0)
+                    {
+
+                        _context.MusicRecord.Remove(SelectedMusicRecord);
+                        _context.SaveChanges();
+                        await this.ShowMessageAsync("Удаление успешно!", "Пластинка была успешно удалена.", MessageDialogStyle.Affirmative);
+                    }
+                    else
+                    {
+                        await this.ShowMessageAsync("Невозможно удалить!", "Данная пластинка имеет историю продаж. Товар с историей продаж удалить нельзя.", MessageDialogStyle.Affirmative, new MetroDialogSettings { ColorScheme = MetroDialogColorScheme.Inverted });
+                    }
+                }
+            }
+        }
+
+        private void Edit_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var musicRecordWindow = new MusicRecordWindow(_context, SelectedMusicRecord);
+                if (musicRecordWindow.ShowDialog() == true)
+                {
+                    LoadMusicRecords();
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
+            var musicRecordWindow = new MusicRecordWindow(_context);
+            if (musicRecordWindow.ShowDialog() == true)
             {
                 LoadMusicRecords();
             }

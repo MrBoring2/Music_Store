@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Music_Store.Views.Windows"
         mc:Ignorable="d"
+
         xmlns:mahapps="http://metro.mahapps.com/winfx/xaml/controls"
-        Title="Music Store | Оформление поставки" Height="795" Width="1100" MinHeight="800" MinWidth="1100">
+        Title="Music Store | Оформление поставки" Height="795" Width="1100" MinHeight="800" MinWidth="1100" WindowStartupLocation="CenterScreen"> 
     <local:BaseWindow.IconTemplate>
         <DataTemplate>
             <Image Margin="2"

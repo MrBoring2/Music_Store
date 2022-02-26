@@ -251,7 +251,6 @@ C:\Users\MrBoring\GIT\Music_Store\Music Store\bin\Debug\Microsoft.Xaml.Behaviors
 C:\Users\MrBoring\GIT\Music_Store\Music Store\bin\Debug\ru\EntityFramework.resources.dll
 C:\Users\MrBoring\GIT\Music_Store\Music Store\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
 C:\Users\MrBoring\GIT\Music_Store\Music Store\bin\Debug\de\MahApps.Metro.resources.dll
-C:\Users\MrBoring\GIT\Music_Store\Music Store\obj\Debug\Music Store.csproj.AssemblyReference.cache
 C:\Users\MrBoring\GIT\Music_Store\Music Store\obj\Debug\Music Store.csproj.SuggestedBindingRedirects.cache
 C:\Users\MrBoring\GIT\Music_Store\Music Store\obj\Debug\Views\Windows\MusicRecordsListWindow.g.cs
 C:\Users\MrBoring\GIT\Music_Store\Music Store\obj\Debug\Views\Windows\OrderWindow.g.cs
@@ -273,3 +272,11 @@ C:\Users\MrBoring\GIT\Music_Store\Music Store\obj\Debug\Views\Windows\LoginWindo
 C:\Users\MrBoring\GIT\Music_Store\Music Store\obj\Debug\Views\Windows\LoginWindow.baml
 C:\Users\MrBoring\GIT\Music_Store\Music Store\obj\Debug\Views\Windows\DeliveryWindow.g.cs
 C:\Users\MrBoring\GIT\Music_Store\Music Store\obj\Debug\Views\Windows\DeliveryWindow.baml
+C:\Users\MrBoring\GIT\Music_Store\Music Store\obj\Debug\Views\Windows\AdminPanelWindow.g.cs
+C:\Users\MrBoring\GIT\Music_Store\Music Store\obj\Debug\Views\Windows\AdminPanelWindow.baml
+C:\Users\MrBoring\GIT\Music_Store\Music Store\obj\Debug\Views\Windows\EmployeesListWindow.g.cs
+C:\Users\MrBoring\GIT\Music_Store\Music Store\obj\Debug\Views\Windows\EmployeesListWindow.baml
+C:\Users\MrBoring\GIT\Music_Store\Music Store\obj\Debug\Views\Windows\MusicRecordWindow.g.cs
+C:\Users\MrBoring\GIT\Music_Store\Music Store\obj\Debug\Views\Windows\MusicRecordWindow.baml
+C:\Users\MrBoring\GIT\Music_Store\Music Store\obj\Debug\Views\Windows\EmployeeWindow.g.cs
+C:\Users\MrBoring\GIT\Music_Store\Music Store\obj\Debug\Views\Windows\EmployeeWindow.baml

@@ -1,0 +1,46 @@
+﻿<local:BaseWindow x:Class="Music_Store.Views.Windows.EmployeeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Music_Store.Views.Windows"
+        mc:Ignorable="d"
+        Title="Music Store | Сотрудник" Height="400" MinHeight="400" MinWidth="350" Width="350" WindowStartupLocation="CenterScreen">
+    <local:BaseWindow.IconTemplate>
+        <DataTemplate>
+            <Image Margin="2"
+                   RenderOptions.BitmapScalingMode="HighQuality"
+                   Source="/Resources/Images/logo.ico"/>
+        </DataTemplate>
+    </local:BaseWindow.IconTemplate>
+    <Grid>
+        <StackPanel  Margin="5">
+            <StackPanel Margin="0,0,0,5">
+                <TextBlock Text="ФИО" FontSize="16"/>
+                <TextBox Text="{Binding FullName}" FontSize="14" BorderBrush="#A4C400"/>
+            </StackPanel>
+            <StackPanel Margin="0,0,0,5">
+                <TextBlock Text="Номер телефона" FontSize="16"/>
+                <TextBox Text="{Binding PhoneNumber}" BorderBrush="#A4C400" FontSize="14"/>
+            </StackPanel>
+            <StackPanel Margin="0,0,0,5">
+                <TextBlock Text="Роль" FontSize="16"/>
+                <ComboBox ItemsSource="{Binding Roles}" DisplayMemberPath="Title" SelectedItem="{Binding SelectedRole}" FontSize="14" BorderBrush="#A4C400"/>
+            </StackPanel>
+            <StackPanel Margin="0,0,0,5">
+                <TextBlock Text="Логин" FontSize="16"/>
+                <TextBox BorderBrush="#A4C400" Text="{Binding Login}" FontSize="14"/>
+            </StackPanel>
+            <StackPanel Margin="0,0,0,5">
+                <TextBlock Text="Пароль" FontSize="16"/>
+                <TextBox BorderBrush="#A4C400" Text="{Binding Password}" FontSize="14"/>
+            </StackPanel>
+
+        </StackPanel>
+        <Button Background="#CC60A917" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="200" Margin="5" Foreground="White" BorderBrush="#A4C400" Style="{StaticResource MahApps.Styles.Button.Square.Accent}" Click="Save_Click">
+            <Button.Content>
+                <TextBlock Text="Сохранить" FontSize="16"/>
+            </Button.Content>
+        </Button>
+    </Grid>
+</local:BaseWindow>

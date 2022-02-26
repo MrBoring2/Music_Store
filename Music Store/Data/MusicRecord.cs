@@ -6,6 +6,7 @@ namespace Music_Store.Data
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
     using System.Linq;
+    using System.Windows.Controls;
 
     [Table("MusicRecord")]
     public partial class MusicRecord : BaseEntity
@@ -16,6 +17,13 @@ namespace Music_Store.Data
             MusicRecordInDelivery = new List<MusicRecordInDelivery>();
             MusicRecordInOrder = new List<MusicRecordInOrder>();
             Genre = new List<Genre>();
+            MenuItems = new List<MenuItem>
+            {
+                new MenuItem{ Header = "Выставить в зал"},
+                new MenuItem{ Header = "Вынести из зала на склад" },
+                new MenuItem{ Header = "Редактировать"},
+                new MenuItem{Header = "Удалить"}
+            };
         }
 
         public int Id { get; set; }
@@ -71,6 +79,8 @@ namespace Music_Store.Data
                 return genres;
             }
         }
+        [NotMapped]
+        public List<MenuItem> MenuItems { get; set; }
         public int TypeId { get; set; }
 
         public virtual MusicRecordType MusicRecordType { get; set; }

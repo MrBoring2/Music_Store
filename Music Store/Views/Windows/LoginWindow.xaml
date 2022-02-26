@@ -8,7 +8,7 @@
         mc:Ignorable="d" ResizeMode="NoResize"
                   
         xmlns:mahapps="http://metro.mahapps.com/winfx/xaml/controls"
-        Title="MusicStore | Авторизация" Height="448" Width="646">
+        Title="MusicStore | Авторизация" Height="448" Width="646" WindowStartupLocation="CenterScreen">
     <local:BaseWindow.IconTemplate>
         <DataTemplate>
             <Image Margin="2"
@@ -21,11 +21,11 @@
             <Grid>
                 <Grid Margin="0,60,0,0">
                     <iconPacks:PackIconMaterial Kind="AccountOutline" Height="40" Width="40" Margin="10"/>
-                    <TextBox Margin="60,20,10,10" Text="{Binding Login}" mahapps:TextBoxHelper.Watermark="Логин" mahapps:TextBoxHelper.UseFloatingWatermark="True" VerticalAlignment="Top" BorderBrush="#CC60A917"/>
+                    <TextBox FontSize="16" Margin="60,15,10,10" Text="{Binding Login}" mahapps:TextBoxHelper.Watermark="Логин" mahapps:TextBoxHelper.UseFloatingWatermark="True" VerticalAlignment="Top" BorderBrush="#CC60A917"/>
                 </Grid>
                 <Grid Margin="0,120,0,0">
                     <iconPacks:PackIconMaterial Kind="LockOutline" Height="40" Width="40" Margin="10"/>
-                    <TextBox Margin="60,20,10,10" Text="{Binding Password}" mahapps:TextBoxHelper.Watermark="Пароль" mahapps:TextBoxHelper.UseFloatingWatermark="True" VerticalAlignment="Top" BorderBrush="#CC60A917"/>
+                    <PasswordBox FontSize="16"  mahapps:PasswordBoxBindingBehavior.Password="{Binding Password}" Margin="60,15,10,10" mahapps:TextBoxHelper.Watermark="Пароль" mahapps:TextBoxHelper.UseFloatingWatermark="True" VerticalAlignment="Top" BorderBrush="#CC60A917"/>
                 </Grid>
                 <Button IsEnabled="{Binding BtnEnable}" VerticalAlignment="Bottom" Background="#CC60A917"  BorderBrush="#A4C400" Click="Login_Click" Style="{StaticResource MahApps.Styles.Button.Square.Accent}" Height="30" Margin="10">
                     <Button.Content>

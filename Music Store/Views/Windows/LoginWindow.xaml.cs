@@ -50,6 +50,17 @@ namespace Music_Store.Views.Windows
                         musicRecordWindow.Show();
                         this.Close();
                     }
+                    else if (user.RoleId == 2)
+                    {
+                        var adminWindow = new AdminPanelWindow();
+                        adminWindow.Show();
+                        this.Close();
+                    }
+                    else
+                    {
+                        await this.ShowMessageAsync("Пользовтаель не распознан!", "Роль не найдена.", MessageDialogStyle.Affirmative, new MetroDialogSettings { ColorScheme = MetroDialogColorScheme.Inverted });
+                        return;
+                    }
 
                     BtnEnable = true;
                 }

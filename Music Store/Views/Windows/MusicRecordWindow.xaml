@@ -1,0 +1,84 @@
+﻿<local:BaseWindow x:Class="Music_Store.Views.Windows.MusicRecordWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Music_Store.Views.Windows"
+        mc:Ignorable="d"
+        Title="Music Store | Музыкальная пластинка" Height="500" Width="640" MinHeight="500" MinWidth="640" WindowStartupLocation="CenterScreen">
+    <local:BaseWindow.IconTemplate>
+        <DataTemplate>
+            <Image Margin="2"
+                   RenderOptions.BitmapScalingMode="HighQuality"
+                   Source="/Resources/Images/logo.ico"/>
+        </DataTemplate>
+    </local:BaseWindow.IconTemplate>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Margin="5,5,5,5" Grid.ColumnSpan="1">
+            <StackPanel Margin="0,0,0,5">
+                <TextBlock Text="Название пластинки" FontSize="16"/>
+                <TextBox Text="{Binding MusicRecordTitle}" FontSize="14" BorderBrush="#A4C400"/>
+            </StackPanel>
+            <StackPanel Margin="0,0,0,5">
+                <TextBlock Text="Лейбл" FontSize="16"/>
+                <TextBox Text="{Binding Label}" FontSize="14" BorderBrush="#A4C400"/>
+            </StackPanel>
+            <StackPanel Margin="0,0,0,5">
+                <TextBlock Text="Исполнители" FontSize="16"/>
+                <TextBox Text="{Binding Performers}" FontSize="14" BorderBrush="#A4C400"/>
+            </StackPanel>
+            <StackPanel Margin="0,0,0,5">
+                <TextBlock Text="Дата релиза" FontSize="16"/>
+                <DatePicker SelectedDate="{Binding ReleaseDate}" FontSize="14" BorderBrush="#A4C400"/>
+            </StackPanel>
+            <StackPanel Margin="0,0,0,5">
+                <TextBlock Text="Тип музыкальной пластинки" FontSize="16"/>
+                <ComboBox ItemsSource="{Binding Types}" DisplayMemberPath="Title" SelectedItem="{Binding SelectedType}" FontSize="14" BorderBrush="#A4C400"/>
+            </StackPanel>
+            <StackPanel Margin="0,0,0,5">
+                <TextBlock Text="Цена" FontSize="16"/>
+                <TextBox Text="{Binding Price}" FontSize="14" BorderBrush="#A4C400"/>
+            </StackPanel>
+            <StackPanel Margin="0,0,0,5">
+                <TextBlock Text="На складе" FontSize="16"/>
+                <TextBox Text="{Binding CountInStock}" FontSize="14" BorderBrush="#A4C400"/>
+            </StackPanel>
+
+
+        </StackPanel>
+        <StackPanel Grid.Column="1" Margin="5">
+            <StackPanel Margin="0,0,0,5">
+                <TextBlock Text="Треклист" FontSize="16"/>
+                <RichTextBox x:Name="treckListDocument" Height="80" VerticalScrollBarVisibility="Auto" FontSize="14" BorderBrush="#A4C400"/>
+            </StackPanel>
+            <StackPanel Margin="0,0,0,5">
+                <TextBlock Text="Жанры" FontSize="16"/>
+                <ListBox FontSize="14" Height="125" BorderBrush="#A4C400" BorderThickness="1" ItemsSource="{Binding Genres}" SelectionChanged="ListBox_SelectionChanged">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate DataType="{x:Type ListViewItem}">
+                            <CheckBox Content="{Binding Title}" IsChecked="{Binding IsSelected}"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+            <StackPanel Margin="0,0,0,5">
+                <TextBlock Text="Изображение" FontSize="16"/>
+                <Image Height="80" Width="80" Source="{Binding Image}" RenderOptions.BitmapScalingMode="HighQuality"/>
+                <Button Margin="0,5" Background="#CC60A917" Foreground="White" BorderBrush="#A4C400" Style="{StaticResource MahApps.Styles.Button.Square.Accent}" Click="LoadImage_Click">
+                    <Button.Content>
+                        <TextBlock Text="Загрузить изображение" FontSize="16"/>
+                    </Button.Content>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+        <Button Margin="0,5" Width="200"  Background="#CC60A917" HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.ColumnSpan="2" Foreground="White" BorderBrush="#A4C400" Style="{StaticResource MahApps.Styles.Button.Square.Accent}" Click="Save_Click">
+            <Button.Content>
+                <TextBlock Text="Сохранить" FontSize="16"/>
+            </Button.Content>
+        </Button>
+    </Grid>
+</local:BaseWindow>

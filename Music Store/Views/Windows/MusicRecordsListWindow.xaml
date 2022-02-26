@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Music_Store.Views.Windows"
         mc:Ignorable="d"
         xmlns:mahapps="http://metro.mahapps.com/winfx/xaml/controls"
-        Title="Music Store | Список музыкальных пластинок" MinHeight="800" MinWidth="1050">
+        Title="Music Store | Список музыкальных пластинок" MinHeight="800" MinWidth="1050" WindowStartupLocation="CenterScreen">
     <local:BaseWindow.IconTemplate>
         <DataTemplate>
             <Image Margin="2"
@@ -24,9 +24,9 @@
             <ColumnDefinition Width="149*"/>
             <ColumnDefinition Width="250"/>
         </Grid.ColumnDefinitions>
-        <TextBox UndoLimit="4" Text="{Binding Search, UpdateSourceTrigger=PropertyChanged}" Margin="4,4,4,4" mahapps:TextBoxHelper.Watermark="Введите название пластинки, лейбл или исполнителя для поиска..." FontSize="14" BorderBrush="#A4C400" Height="30" VerticalAlignment="Top"/>
+        <TextBox UndoLimit="4" Text="{Binding Search, UpdateSourceTrigger=PropertyChanged}"  Margin="4,4,4,4" mahapps:TextBoxHelper.Watermark="Введите название пластинки, лейбл или исполнителя для поиска..." FontSize="14" BorderBrush="#A4C400" Height="30" VerticalAlignment="Top"/>
 
-        <ListView Grid.Column="0" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled" VerticalContentAlignment="Stretch" Grid.Row="1" Margin="4,4,4,4" ItemsSource="{Binding DisplayedMusicRecords}" SelectedItem="{Binding SelectedMusicRecord}">
+        <ListView x:Name="listView" Grid.Column="0" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled" VerticalContentAlignment="Stretch" Grid.Row="1" Margin="4,4,4,4" ItemsSource="{Binding DisplayedMusicRecords}" SelectedItem="{Binding SelectedMusicRecord}">
             <ListView.ItemTemplate>
                 <DataTemplate DataType="{x:Type ListViewItem}">
                     <Border BorderBrush="#A4C400" BorderThickness="1">
@@ -37,7 +37,7 @@
                                 <ColumnDefinition Width="200"/>
                             </Grid.ColumnDefinitions>
                             <Image Width="75" Height="80" Margin="5" Source="{Binding Image}" RenderOptions.BitmapScalingMode="HighQuality"/>
-                            <StackPanel Grid.Column="1" Margin="5">
+                            <StackPanel Grid.Column="1" Margin="5" Background="Transparent">
                                 <TextBlock Text="{Binding Title}" FontSize="20" FontWeight="Bold"  TextWrapping="Wrap"/>
                                 <TextBlock Text="{Binding MusicRecordType.Title}" FontSize="15"/>
                                 <TextBlock Text="{Binding Label, StringFormat={}Лейбл: {0}}" FontSize="14"/>
@@ -45,9 +45,9 @@
                                 <TextBlock Text="{Binding Performers, StringFormat={}Исполнители: {0}}" FontSize="14" HorizontalAlignment="Left" MaxWidth="800" TextWrapping="Wrap"/>
                                 <TextBlock Text="{Binding GenresString, StringFormat={}Жанры: {0}}" FontSize="14" HorizontalAlignment="Left" MaxWidth="800" TextWrapping="Wrap"/>
                             </StackPanel>
-                            <StackPanel Grid.Column="2" HorizontalAlignment="Left" Margin="5">
+                            <StackPanel Grid.Column="2" HorizontalAlignment="Left" Margin="5" Background="Transparent">
                                 <TextBlock Text="{Binding Price, StringFormat={}{0:F2} ₽}" FontSize="20" Margin="5"/>
-                                <StackPanel Margin="0,40,0,0">
+                                <StackPanel Margin="0,40,0,0" Background="Transparent">
                                     <TextBlock Text="{Binding CountInStockText, StringFormat={} На складе: {0}}" FontSize="16"/>
                                     <TextBlock Text="{Binding CountInHall, StringFormat={} В зале: {0}}" FontSize="16"/>
                                 </StackPanel>
@@ -55,13 +55,10 @@
 
                         </Grid>
                         <Border.ContextMenu>
-                            <ContextMenu>
-                                <MenuItem Header="Выставить в зал" Click="setInHall_Click"/>
-                                <MenuItem Header="Вынести из зала на склад" Click="removeFromHall_Click"/>
-                            </ContextMenu>
+                            <ContextMenu ItemsSource="{Binding MenuItems}"/>
                         </Border.ContextMenu>
                     </Border>
-
+                    
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
@@ -112,20 +109,20 @@
                         <StackPanel Margin="0,0,0,50">
                             <GroupBox Header="Тип">
                                 <StackPanel>
-                                    <ComboBox ItemsSource="{Binding Types}" SelectedItem="{Binding SelectedType}"/>
+                                    <ComboBox ItemsSource="{Binding Types}" FontSize="14" SelectedItem="{Binding SelectedType}" BorderBrush="#A4C400"/>
                                 </StackPanel>
                             </GroupBox>
                             <GroupBox Header="Сортировка" Margin="0,5,0,0">
                                 <StackPanel>
-                                    <ComboBox x:Name="sortList" ItemsSource="{Binding SortParams}" SelectedItem="{Binding SelectedSort}" DisplayMemberPath="Title"/>
-                                    <CheckBox IsChecked="{Binding ElementName=sortList, Path=SelectedItem.IsAscending}" Content="По возрастанию" Margin="0,5,0,0"/>
+                                    <ComboBox FontSize="14" x:Name="sortList" ItemsSource="{Binding SortParams}" SelectedItem="{Binding SelectedSort}" DisplayMemberPath="Title"  BorderBrush="#A4C400"/>
+                                    <CheckBox FontSize="14" IsChecked="{Binding ElementName=sortList, Path=SelectedItem.IsAscending}" Content="По возрастанию" Margin="0,5,0,0"/>
                                 </StackPanel>
                             </GroupBox>
                             <Expander Header="Жанры" Margin="0,5,0,0">
                                 <ListView ItemsSource="{Binding Genres}" SelectionChanged="ListView_SelectionChanged">
                                     <ListView.ItemTemplate>
                                         <DataTemplate DataType="{x:Type ListViewItem}">
-                                            <CheckBox IsChecked="{Binding IsSelected}" Content="{Binding Title}"/>
+                                            <CheckBox IsChecked="{Binding IsSelected}" FontSize="14" Content="{Binding Title}"/>
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
                                 </ListView>
@@ -134,18 +131,35 @@
                     </Grid>
                 </ScrollViewer>
                 <StackPanel VerticalAlignment="Bottom" Margin="5">
-                    <Button Margin="0,5" Background="#CC60A917" Foreground="White" BorderBrush="#A4C400" Style="{StaticResource MahApps.Styles.Button.Square.Accent}" Click="order_Click">
+                    <Button Margin="0,5" Background="#CC60A917" Visibility="{Binding WorkerVisibility}" Foreground="White" BorderBrush="#A4C400" Style="{StaticResource MahApps.Styles.Button.Square.Accent}" Click="order_Click">
                         <Button.Content>
                             <TextBlock Text="Оформить заказ" FontSize="16"/>
                         </Button.Content>
                     </Button>
-                    <Button Background="#CC60A917" Foreground="White" BorderBrush="#A4C400" Style="{StaticResource MahApps.Styles.Button.Square.Accent}" Click="delivery_Click">
+                    <Button Background="#CC60A917"  Visibility="{Binding WorkerVisibility}"  Foreground="White" BorderBrush="#A4C400" Style="{StaticResource MahApps.Styles.Button.Square.Accent}" Click="delivery_Click">
                         <Button.Content>
                             <TextBlock Text="Оформить поставку" FontSize="16"/>
+                        </Button.Content>
+                    </Button>
+                    <Button Background="#CC60A917"  Visibility="{Binding AdminVisibility}" Margin="0,5,0,0" Foreground="White" BorderBrush="#A4C400" Style="{StaticResource MahApps.Styles.Button.Square.Accent}" Click="Add_Click">
+                        <Button.Content>
+                            <TextBlock Text="Добавить пластинку" FontSize="16"/>
                         </Button.Content>
                     </Button>
                 </StackPanel>
             </Grid>
         </Border>
+
+        <Button Background="#CC60A917" Visibility="{Binding AdminVisibility}" Grid.Column="1" Grid.Row="2" Margin="5" Foreground="White" BorderBrush="#A4C400" Style="{StaticResource MahApps.Styles.Button.Square.Accent}" Click="Back_Click">
+            <Button.Content>
+                <TextBlock Text="Назад" FontSize="16"/>
+            </Button.Content>
+        </Button>
+
+        <Button Background="#CC60A917" Visibility="{Binding WorkerVisibility}" Grid.Column="1" Grid.Row="2" Margin="5" Foreground="White" BorderBrush="#A4C400" Style="{StaticResource MahApps.Styles.Button.Square.Accent}" Click="Exit_Click">
+            <Button.Content>
+                <TextBlock Text="Выход" FontSize="16"/>
+            </Button.Content>
+        </Button>
     </Grid>
 </local:BaseWindow>

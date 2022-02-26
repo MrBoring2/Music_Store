@@ -24,6 +24,14 @@ namespace Music_Store.Services
             }
 
         }
+        public void Logout()
+        {
+            if (Employee != null)
+            {
+                Employee = null;
+            }
+
+        }
     }
 }
 
