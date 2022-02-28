@@ -138,7 +138,7 @@ namespace Music_Store.Views.Windows
         private void LoadMusicRecords()
         {
             MusicRecords = _context.MusicRecord.ToList();
-           
+
             DisplayedMusicRecords = new ObservableCollection<MusicRecord>();
             RefreshMusicRecords();
         }
@@ -407,7 +407,7 @@ namespace Music_Store.Views.Windows
                     LoadMusicRecords();
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
@@ -420,6 +420,12 @@ namespace Music_Store.Views.Windows
             {
                 LoadMusicRecords();
             }
+        }
+
+        private void Statictics_Click(object sender, RoutedEventArgs e)
+        {
+            var statisticsWindow = new StaticsticsWindow(_context);
+            statisticsWindow.ShowDialog();
         }
     }
 }

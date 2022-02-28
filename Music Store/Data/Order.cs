@@ -17,7 +17,7 @@ namespace Music_Store.Data
 
         public int Id { get; set; }
 
-        [Column(TypeName = "date")]
+        [Column(TypeName = "datetime")]
         public DateTime Date { get; set; }
 
         public int EmployeeId { get; set; }

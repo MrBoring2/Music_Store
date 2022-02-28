@@ -173,7 +173,7 @@ namespace Music_Store.Views.Windows
             if (employeeWindow.ShowDialog() == true)
             {
                 LoadEmployees();
-                await this.ShowMessageAsync("Сотрудник добавлен!", "СОрудник успешно добавлен в базу данных.", MessageDialogStyle.Affirmative);
+                await this.ShowMessageAsync("Сотрудник добавлен!", "Сорудник успешно добавлен в базу данных.", MessageDialogStyle.Affirmative);
             }
         }
 

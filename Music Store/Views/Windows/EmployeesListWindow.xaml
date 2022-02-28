@@ -7,7 +7,7 @@
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="Music_Store.Views.Windows.EmployeesListWindow"
         mc:Ignorable="d"
         xmlns:mahapps="http://metro.mahapps.com/winfx/xaml/controls"
-        Title="Music Store | Список сотрудников" Height="685" MinHeight="685" MinWidth="990" Width="990">
+        Title="Music Store | Список сотрудников" Height="685" MinHeight="685" MinWidth="990" Width="990" WindowStartupLocation="CenterScreen">
     <local:BaseWindow.IconTemplate>
         <DataTemplate>
             <Image Margin="2"

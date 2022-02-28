@@ -280,3 +280,15 @@ C:\Users\MrBoring\GIT\Music_Store\Music Store\obj\Debug\Views\Windows\MusicRecor
 C:\Users\MrBoring\GIT\Music_Store\Music Store\obj\Debug\Views\Windows\MusicRecordWindow.baml
 C:\Users\MrBoring\GIT\Music_Store\Music Store\obj\Debug\Views\Windows\EmployeeWindow.g.cs
 C:\Users\MrBoring\GIT\Music_Store\Music Store\obj\Debug\Views\Windows\EmployeeWindow.baml
+C:\Users\MrBoring\GIT\Music_Store\Music Store\bin\Debug\LiveCharts.dll
+C:\Users\MrBoring\GIT\Music_Store\Music Store\bin\Debug\LiveCharts.Wpf.dll
+C:\Users\MrBoring\GIT\Music_Store\Music Store\bin\Debug\LiveCharts.pdb
+C:\Users\MrBoring\GIT\Music_Store\Music Store\bin\Debug\LiveCharts.xml
+C:\Users\MrBoring\GIT\Music_Store\Music Store\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\MrBoring\GIT\Music_Store\Music Store\bin\Debug\LiveCharts.Wpf.xml
+C:\Users\MrBoring\GIT\Music_Store\Music Store\obj\Debug\Views\Windows\StaticsticsWindow.g.cs
+C:\Users\MrBoring\GIT\Music_Store\Music Store\obj\Debug\Views\Windows\StaticsticsWindow.baml
+C:\Users\MrBoring\GIT\Music_Store\Music Store\obj\Debug\Views\Statistics\AveragePriceOfSales.g.cs
+C:\Users\MrBoring\GIT\Music_Store\Music Store\obj\Debug\Views\Statistics\CountOfSales.g.cs
+C:\Users\MrBoring\GIT\Music_Store\Music Store\obj\Debug\Views\Statistics\AveragePriceOfSales.baml
+C:\Users\MrBoring\GIT\Music_Store\Music Store\obj\Debug\Views\Statistics\CountOfSales.baml

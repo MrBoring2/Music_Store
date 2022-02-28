@@ -104,7 +104,7 @@
 
         <Border BorderBrush="#A4C400" BorderThickness="1" CornerRadius="5" Grid.Column="1" Grid.RowSpan="2" Margin="4,4,4,4">
             <Grid>
-                <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Margin="5,5,5,85">
+                <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Margin="5,5,5,120">
                     <Grid>
                         <StackPanel Margin="0,0,0,50">
                             <GroupBox Header="Тип">
@@ -144,6 +144,11 @@
                     <Button Background="#CC60A917"  Visibility="{Binding AdminVisibility}" Margin="0,5,0,0" Foreground="White" BorderBrush="#A4C400" Style="{StaticResource MahApps.Styles.Button.Square.Accent}" Click="Add_Click">
                         <Button.Content>
                             <TextBlock Text="Добавить пластинку" FontSize="16"/>
+                        </Button.Content>
+                    </Button>
+                    <Button Background="#CC60A917"  Visibility="{Binding WorkerVisibility}" Margin="0,5,0,0" Foreground="White" BorderBrush="#A4C400" Style="{StaticResource MahApps.Styles.Button.Square.Accent}" Click="Statictics_Click">
+                        <Button.Content>
+                            <TextBlock Text="Статистика по продажам" FontSize="16"/>
                         </Button.Content>
                     </Button>
                 </StackPanel>
