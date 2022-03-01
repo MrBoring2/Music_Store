@@ -94,7 +94,7 @@
                 <TextBlock Text="Оформить заказ" FontSize="20"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Button.Content>
         </Button>
-        <Button Grid.Row="1" Grid.Column="1" Margin="5,5,5,5" Background="#CC60A917"  BorderBrush="#A4C400"  Style="{StaticResource MahApps.Styles.Button.Square.Accent}" Foreground="White" Click="remove_Click">
+        <Button Grid.Row="1" Grid.Column="1" Margin="5,5,5,5" Background="#CC60A917"  BorderBrush="#A4C400"  Style="{StaticResource MahApps.Styles.Button.Square.Accent}" Foreground="White" Click="cancel_Click">
             <Button.Content>
                 <TextBlock Text="Отмена" FontSize="20"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Button.Content>

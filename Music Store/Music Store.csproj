@@ -206,11 +206,11 @@
     <Compile Include="Models\SortModel.cs" />
     <Compile Include="Models\StatisticsAveragePriceModel.cs" />
     <Compile Include="Services\UserService.cs" />
-    <Compile Include="Views\Statistics\AveragePriceOfSales.xaml.cs">
-      <DependentUpon>AveragePriceOfSales.xaml</DependentUpon>
+    <Compile Include="Views\Statistics\AveragePriceOfSalesPage.xaml.cs">
+      <DependentUpon>AveragePriceOfSalesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Statistics\CountOfSales.xaml.cs">
-      <DependentUpon>CountOfSales.xaml</DependentUpon>
+    <Compile Include="Views\Statistics\CountOfSalesPage.xaml.cs">
+      <DependentUpon>CountOfSalesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Statistics\BasePage.cs" />
     <Compile Include="Views\Windows\AdminPanelWindow.xaml.cs">
@@ -270,11 +270,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Views\Statistics\AveragePriceOfSales.xaml">
+    <Page Include="Views\Statistics\AveragePriceOfSalesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Statistics\CountOfSales.xaml">
+    <Page Include="Views\Statistics\CountOfSalesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

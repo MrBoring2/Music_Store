@@ -38,7 +38,7 @@ namespace Music_Store.Views.Statistics {
     /// <summary>
     /// AveragePriceOfSales
     /// </summary>
-    public partial class AveragePriceOfSales : Music_Store.Views.Statistics.BasePage, System.Windows.Markup.IComponentConnector {
+    public partial class AveragePriceOfSalesPage : Music_Store.Views.Statistics.BasePage, System.Windows.Markup.IComponentConnector {
         
         private bool _contentLoaded;
         

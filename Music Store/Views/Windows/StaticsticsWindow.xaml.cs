@@ -65,11 +65,11 @@ namespace Music_Store.Views.Windows
             {
                 if (SelectedStatistics == "Количество продаж")
                 {
-                    StatisticsPage = new CountOfSales(_context, StartDate, EndDate);
+                    StatisticsPage = new CountOfSalesPage(_context, StartDate, EndDate);
                 }
                 else if (SelectedStatistics == "Средняя стоимость продаж")
                 {
-                    StatisticsPage = new AveragePriceOfSales(_context, StartDate, EndDate);
+                    StatisticsPage = new AveragePriceOfSalesPage(_context, StartDate, EndDate);
                 }
             }
             else

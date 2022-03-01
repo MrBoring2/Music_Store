@@ -6,16 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Music_Store.Views.Windows
 {
@@ -40,6 +31,9 @@ namespace Music_Store.Views.Windows
             DataContext = this;
         }
 
+        /// <summary>
+        /// Загрузка музыкальных пластинок
+        /// </summary>
         private void LoadMusicRecords()
         {
             MusicRecords = new ObservableCollection<MusicRecord>(_context.MusicRecord.OrderBy(p => p.Title));
@@ -53,6 +47,11 @@ namespace Music_Store.Views.Windows
         public MusicRecordOrderAndDelivery SelectedMusicRecordInOrder { get { return selectedMusicRecordInOrder; } set { selectedMusicRecordInOrder = value; OnPropertyChanged(); } }
         public decimal TotalPrice { get { return totalPrice; } set { totalPrice = value; OnPropertyChanged(); } }
         public string Search { get { return search; } set { search = value; OnPropertyChanged(); OnPropertyChanged(nameof(DisplayedMusicRecords)); } }
+        /// <summary>
+        /// Кнопка добавления пластинки в заказ
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void addToOrder_Click(object sender, RoutedEventArgs e)
         {
             if (SelectedMusicRecord != null)
@@ -91,6 +90,11 @@ namespace Music_Store.Views.Windows
             }
         }
 
+        /// <summary>
+        /// Унопка удаления пластинки из заказа
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void removeFromOrder_Click(object sender, RoutedEventArgs e)
         {
             if (SelectedMusicRecordInOrder != null)
@@ -99,7 +103,12 @@ namespace Music_Store.Views.Windows
                 MusicRecordsInOrder.Remove(SelectedMusicRecordInOrder);
             }
         }
-
+        
+        /// <summary>
+        /// Сохранить заказ
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void save_Click(object sender, RoutedEventArgs e)
         {
             if (MusicRecordsInOrder.Count > 0)
@@ -133,7 +142,12 @@ namespace Music_Store.Views.Windows
             }
         }
 
-        private void remove_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Отмена
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cancel_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = false;
         }

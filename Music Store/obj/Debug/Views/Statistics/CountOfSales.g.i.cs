@@ -39,7 +39,7 @@ namespace Music_Store.Views.Statistics {
     /// <summary>
     /// CountOfSales
     /// </summary>
-    public partial class CountOfSales : Music_Store.Views.Statistics.BasePage, System.Windows.Markup.IComponentConnector {
+    public partial class CountOfSalesPage : Music_Store.Views.Statistics.BasePage, System.Windows.Markup.IComponentConnector {
         
         private bool _contentLoaded;
         

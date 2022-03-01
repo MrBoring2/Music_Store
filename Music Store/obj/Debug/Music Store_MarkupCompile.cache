@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\MrBoring\GIT\Music_Store\Music Store\App.xaml
-112130257492
+11786429567
 
-35636550598
-591228296419
-Views\Statistics\AveragePriceOfSales.xaml;Views\Statistics\CountOfSales.xaml;Views\Windows\AdminPanelWindow.xaml;Views\Windows\DeliveryWindow.xaml;Views\Windows\EmployeesListWindow.xaml;Views\Windows\EmployeeWindow.xaml;Views\Windows\LoginWindow.xaml;Views\Windows\MusicRecordWindow.xaml;Views\Windows\MusicRecordsListWindow.xaml;Views\Windows\OrderWindow.xaml;Views\Windows\StaticsticsWindow.xaml;
+35-1527610965
+59272115657
+Views\Statistics\AveragePriceOfSalesPage.xaml;Views\Statistics\CountOfSalesPage.xaml;Views\Windows\AdminPanelWindow.xaml;Views\Windows\DeliveryWindow.xaml;Views\Windows\EmployeesListWindow.xaml;Views\Windows\EmployeeWindow.xaml;Views\Windows\LoginWindow.xaml;Views\Windows\MusicRecordWindow.xaml;Views\Windows\MusicRecordsListWindow.xaml;Views\Windows\OrderWindow.xaml;Views\Windows\StaticsticsWindow.xaml;
 
-False
+True
 

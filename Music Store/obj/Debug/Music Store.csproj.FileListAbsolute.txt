@@ -288,7 +288,8 @@ C:\Users\MrBoring\GIT\Music_Store\Music Store\bin\Debug\LiveCharts.Wpf.pdb
 C:\Users\MrBoring\GIT\Music_Store\Music Store\bin\Debug\LiveCharts.Wpf.xml
 C:\Users\MrBoring\GIT\Music_Store\Music Store\obj\Debug\Views\Windows\StaticsticsWindow.g.cs
 C:\Users\MrBoring\GIT\Music_Store\Music Store\obj\Debug\Views\Windows\StaticsticsWindow.baml
-C:\Users\MrBoring\GIT\Music_Store\Music Store\obj\Debug\Views\Statistics\AveragePriceOfSales.g.cs
-C:\Users\MrBoring\GIT\Music_Store\Music Store\obj\Debug\Views\Statistics\CountOfSales.g.cs
-C:\Users\MrBoring\GIT\Music_Store\Music Store\obj\Debug\Views\Statistics\AveragePriceOfSales.baml
-C:\Users\MrBoring\GIT\Music_Store\Music Store\obj\Debug\Views\Statistics\CountOfSales.baml
+C:\Users\MrBoring\GIT\Music_Store\Music Store\obj\Debug\Music Store.csproj.AssemblyReference.cache
+C:\Users\MrBoring\GIT\Music_Store\Music Store\obj\Debug\Views\Statistics\AveragePriceOfSalesPage.g.cs
+C:\Users\MrBoring\GIT\Music_Store\Music Store\obj\Debug\Views\Statistics\CountOfSalesPage.g.cs
+C:\Users\MrBoring\GIT\Music_Store\Music Store\obj\Debug\Views\Statistics\AveragePriceOfSalesPage.baml
+C:\Users\MrBoring\GIT\Music_Store\Music Store\obj\Debug\Views\Statistics\CountOfSalesPage.baml

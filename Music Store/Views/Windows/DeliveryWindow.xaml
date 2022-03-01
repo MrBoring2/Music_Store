@@ -24,7 +24,7 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Text="Пластинки в заказе" Grid.Column="1" FontSize="16" HorizontalAlignment="Center" Margin="5" VerticalAlignment="Top"/>
+        <TextBlock Text="Пластинки в поставке" Grid.Column="1" FontSize="16" HorizontalAlignment="Center" Margin="5" VerticalAlignment="Top"/>
         <Grid Grid.RowSpan="1" Margin="0,0,0,40">
             <Grid Margin="0,0,0,0">
                 <GroupBox Margin="5,5,5,5" Header="Поставщик" VerticalAlignment="Top">

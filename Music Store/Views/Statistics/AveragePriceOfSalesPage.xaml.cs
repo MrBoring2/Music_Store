@@ -23,11 +23,11 @@ namespace Music_Store.Views.Statistics
     /// <summary>
     /// Логика взаимодействия для AveragePriceOfSales.xaml
     /// </summary>
-    public partial class AveragePriceOfSales : BasePage
+    public partial class AveragePriceOfSalesPage : BasePage
     {
         private MusicStoreContext _context;
         private ObservableCollection<StatisticsAveragePriceModel> statisticsAveragePriceList;
-        public AveragePriceOfSales(MusicStoreContext context, DateTime start, DateTime end)
+        public AveragePriceOfSalesPage(MusicStoreContext context, DateTime start, DateTime end)
         {
             _context = context;
             InitializeComponent();

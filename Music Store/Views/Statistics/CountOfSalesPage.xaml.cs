@@ -5,30 +5,19 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Music_Store.Views.Statistics
 {
     /// <summary>
     /// Логика взаимодействия для CountOfSales.xaml
     /// </summary>
-    public partial class CountOfSales : BasePage
+    public partial class CountOfSalesPage : BasePage
     {
         private string mostSales;
         private MusicStoreContext _context;
         private SeriesCollection seriesCollection;
         private ObservableCollection<string> labels;
-        public CountOfSales(MusicStoreContext context, DateTime start, DateTime end)
+        public CountOfSalesPage(MusicStoreContext context, DateTime start, DateTime end)
         {
             InitializeComponent();
             _context = context;
@@ -40,6 +29,11 @@ namespace Music_Store.Views.Statistics
         public SeriesCollection SeriesCollection { get => seriesCollection; set { seriesCollection = value; OnPropertyChanged(); } }
         public string MostSales { get => mostSales; set { mostSales = value; OnPropertyChanged(); } }
         public ObservableCollection<string> Labels { get => labels; set { labels = value; OnPropertyChanged(); } }
+        /// <summary>
+        /// Сформировать статистику
+        /// </summary>
+        /// <param name="start">Дата начала</param>
+        /// <param name="end">Дата конца</param>
         private void GenerateGenresStatistics(DateTime start, DateTime end)
         {
             SeriesCollection = new SeriesCollection();
@@ -53,7 +47,6 @@ namespace Music_Store.Views.Statistics
 
                 foreach (var type in types)
                 {
-
                     int sale = 0;
                     foreach (var musicRecord in genre.MusicRecord.Where(p => p.TypeId == type.Id))
                     {
